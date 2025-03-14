@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Tab</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div id="container">
+      <ul id="navbar"></ul>
+      <hr />
+      <iframe id="iframe"></iframe>
+    </div>
+    <script>
+      const navbar = document.getElementById("navbar");
+      const iframe = document.getElementById("iframe");
+      let clickCurrent = null;
+      const list = [
+        {
+          name: "Web Lectures",
+          link: "https://itest.com.vn/lects/int3306.htm",
+        },
+        { name: "Báo mới", link: "https://baomoi.com/" },
+        { name: "Truyenqq", link: "https://truyenqqto.com/" },
+
+        { name: "AnimeHay", link: "https://animehay.guru/" },
+      ];
+      iframe.src = list[0].link;
+
+      const handleMouseOver = (event) => {
+        if (event.target !== clickCurrent)
+          event.target.className = "hover-content";
+      };
+      const handleMouseOut = (event) => {
+        if (event.target !== clickCurrent)
+          event.target.className = "default-content";
+      };
+
+      const handleOnClick = (event) => {
+        const target = event.target;
+        if (clickCurrent !== null) {
+          clickCurrent.className = "default-content";
+        }
+        clickCurrent = target;
+        target.className = "clicked-content";
+
+        console.log(target.innerText);
+        list.forEach((element) => {
+          if (element.name === target.innerText) {
+            iframe.src = element.link;
+          }
+        });
+      };
+
+      list.forEach((element) => {
+        const li = document.createElement("li");
+        li.textContent = element.name;
+        li.className = "default-content";
+        li.addEventListener("click", handleOnClick);
+        li.addEventListener("mouseover", handleMouseOver);
+        li.addEventListener("mouseout", handleMouseOut);
+        navbar.appendChild(li);
+      });
+    </script>
+  </body>
+</html>

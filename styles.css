@@ -1,0 +1,36 @@
+#navbar {
+  display: flex;
+  flex-direction: row;
+  padding: 0;
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+#navbar li {
+  list-style-type: none;
+  padding: 4px 8px;
+  border: 1px solid rgb(177, 173, 173);
+}
+
+.default-content {
+  background-color: #dee3e7;
+  color: #21536a;
+  cursor: pointer;
+}
+
+.clicked-content {
+  background-color: #00fafc;
+  color: #21536a;
+  cursor: pointer;
+}
+
+.hover-content {
+  color: #21536a;
+  cursor: pointer;
+  background-color: #f8fafc;
+}
+
+#iframe {
+  width: 100%;
+  height: 100vh;
+}
